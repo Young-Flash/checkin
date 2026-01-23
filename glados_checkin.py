@@ -8,6 +8,8 @@ GLaDOS 自动签到脚本
 
 import os
 import sys
+import time
+import random
 import requests
 
 # ========================================
@@ -80,7 +82,7 @@ def main():
 
     results = []
 
-    for env_var in COOKIE_ENV_VARS:
+    for i, env_var in enumerate(COOKIE_ENV_VARS):
         cookie_value = os.environ.get(env_var)
 
         if not cookie_value:
@@ -106,7 +108,15 @@ def main():
 
         status = "✅" if result["success"] else "❌"
         print(f"   {status} {result['message']}")
-        print()
+
+        # 如果不是最后一个账号，则添加随机延迟
+        if i < len(COOKIE_ENV_VARS) - 1:
+            delay = random.randint(10, 100)
+            print(f"⏳ 等待 {delay} 秒后再执行下一个账号...")
+            time.sleep(delay)
+            print()
+        else:
+            print()
 
     # 汇总结果
     print("=" * 50)
