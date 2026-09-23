@@ -17,7 +17,7 @@ import requests
 # 新增账号时，在 GitHub Secrets 添加后，把变量名加到这里
 # ========================================
 COOKIE_ENV_VARS = [
-    "GLADOS_COOKIE",
+#   "GLADOS_COOKIE", // 这个坏了
     "GLADOS_COOKIE_2",
 ]
 
