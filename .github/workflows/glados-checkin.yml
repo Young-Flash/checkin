@@ -1,26 +1,26 @@
-on:
-  schedule:
-    - cron: "0 10 * * *"
-  workflow_dispatch:
+# on:
+#   schedule:
+#     - cron: "0 10 * * *"
+#   workflow_dispatch:
 
-jobs:
-  glados-checkin:
-    name: GLaDOS Checkin
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+# jobs:
+#   glados-checkin:
+#     name: GLaDOS Checkin
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
+#       - name: Set up Python
+#         uses: actions/setup-python@v5
+#         with:
+#           python-version: "3.12"
 
-      - name: Install dependencies
-        run: pip install requests
+#       - name: Install dependencies
+#         run: pip install requests
 
-      - name: Run checkin script
-        run: python ./glados_checkin.py
-        env:
-          GLADOS_COOKIE: ${{ secrets.GLADOS_COOKIE }}
-          GLADOS_COOKIE_2: ${{ secrets.GLADOS_COOKIE_2 }}
+#       - name: Run checkin script
+#         run: python ./glados_checkin.py
+#         env:
+#           GLADOS_COOKIE: ${{ secrets.GLADOS_COOKIE }}
+#           # GLADOS_COOKIE_2: ${{ secrets.GLADOS_COOKIE_2 }}
