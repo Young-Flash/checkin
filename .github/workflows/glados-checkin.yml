@@ -12,6 +12,9 @@ jobs:
       - run: |
           message=$(
           curl 'https://glados.network/api/user/checkin' \
+            --fail-with-body \
+            --retry 3 \
+            --retry-max-time 300 \
             --compressed \
             -X POST \
             -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:158.0) Gecko/20100101 Firefox/158.0' \
