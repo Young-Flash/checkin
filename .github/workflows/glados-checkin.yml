@@ -11,7 +11,7 @@ jobs:
       - run: sudo apt update && sudo apt install -y jq
       - run: |
           message=$(
-          curl 'https://glados.network/api/user/checkin' \
+          curl 'https://glados.cloud/api/user/checkin' \
             --compressed \
             -X POST \
             -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:158.0) Gecko/20100101 Firefox/158.0' \
@@ -19,7 +19,7 @@ jobs:
             -H 'Accept-Language: en-US,en;q=0.9' \
             -H 'Accept-Encoding: gzip, deflate, br, zstd' \
             -H 'Content-Type: application/json;charset=utf-8' \
-            -H 'Origin: https://glados.network' \
+            -H 'Origin: https://glados.cloud' \
             -H 'Connection: keep-alive' \
             -H "$GLADOS_COOKIE" \
             -H 'Sec-Fetch-Dest: empty' \
@@ -29,7 +29,7 @@ jobs:
             -H 'Pragma: no-cache' \
             -H 'Cache-Control: no-cache' \
             -H 'TE: trailers' \
-            --data-raw '{"token":"glados.network"}'
+            --data-raw '{"token":"glados.cloud"}'
           )
           echo "$message" | jq
           code=$(echo "$message" | jq '.code')
